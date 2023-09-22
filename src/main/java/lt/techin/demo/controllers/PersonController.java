@@ -9,9 +9,13 @@ import java.util.List;
 
 @RestController
 public class PersonController {
+
     private final ArrayList<String> people = new ArrayList<>(Arrays.asList("Jurgis", "Antanas",
             "Aloyzas", "Martynas"));
-
+    @GetMapping("/people")
+    public List<String> getPeople() {
+        return people;
+    }
     @GetMapping("/people/{index}")
     public String getPerson(@PathVariable int index) {
         return people.get(index);

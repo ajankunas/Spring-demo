@@ -44,16 +44,20 @@ public class PersonController {
             if (updatedPerson.getFirstName() != null) {
                 person.setFirstName(updatedPerson.getFirstName());
             }
-                if (updatedPerson.getLastName() != null) {
-                    person.setLastName(updatedPerson.getLastName());
-                }
-                return personRepository.save(person);
+            if (updatedPerson.getLastName() != null) {
+                person.setLastName(updatedPerson.getLastName());
             }
+            return personRepository.save(person);
+        }
 
 
         return personRepository.save(updatedPerson);
     }
 
+    @DeleteMapping("/people/{id}")
+    public void deletePerson(@PathVariable int id) {
+        personRepository.deleteById(id);
+    }
     //@DeleteMapping("/people/{index}")
     //public void deletePerson(@PathVariable int index) {
     //   people.remove(index);

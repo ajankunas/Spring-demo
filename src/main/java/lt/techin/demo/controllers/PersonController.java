@@ -3,16 +3,14 @@ package lt.techin.demo.controllers;
 import lt.techin.demo.entities.Person;
 import lt.techin.demo.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class PersonController {
+
     private final PersonRepository personRepository;
 
     @Autowired
@@ -45,12 +43,13 @@ public class PersonController {
             if (updatedPerson.getFirstName() != null) {
                 person.setFirstName(updatedPerson.getFirstName());
             }
+
             if (updatedPerson.getLastName() != null) {
                 person.setLastName(updatedPerson.getLastName());
             }
+
             return personRepository.save(person);
         }
-
 
         return personRepository.save(updatedPerson);
     }
@@ -59,9 +58,4 @@ public class PersonController {
     public void deletePerson(@PathVariable int id) {
         personRepository.deleteById(id);
     }
-    //@DeleteMapping("/people/{index}")
-    //public void deletePerson(@PathVariable int index) {
-    //   people.remove(index);
-    //}
 }
-
